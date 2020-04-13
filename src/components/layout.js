@@ -13,30 +13,31 @@ class Layout extends React.Component {
 
     if (location.pathname === rootPath || location.pathname === blogPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
+        <div>
+          <h1
             style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
+              ...scale(1),
+              marginTop: 0,
             }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
           >
-            {title}
-          </Link>
-        </h1>
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `#006080`,
+              }}
+              to={location.pathname === blogPath ? `/blog/` : `/`}
+            >
+              {title}
+            </Link>
+          </h1>
+        </div>
       )
     } else {
       header = (
-        <h3
+        <h1
           style={{
-            fontFamily: `Montserrat, sans-serif`,
+            ...scale(1),
             marginTop: 0,
           }}
         >
@@ -44,13 +45,13 @@ class Layout extends React.Component {
             style={{
               boxShadow: `none`,
               textDecoration: `none`,
-              color: `inherit`,
+              color: `#006080`,
             }}
             to={`/blog/`}
           >
             {title}
           </Link>
-        </h3>
+        </h1>
       )
     }
     return (
@@ -59,17 +60,70 @@ class Layout extends React.Component {
           style={{
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(24),
+            maxWidth: rhythm(40),
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
-          <header>{header}</header>
+          <header
+            style={{
+              display: "flex",
+              height: "4rem",
+              justifyContent: "space-around",
+              alignItems: "center",
+              background: "#f7f7f7",
+              marginBottom: "4rem",
+              borderBottom: "1px solid black",
+            }}
+          >
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `#006080`,
+              }}
+              to="/"
+            >
+              <img
+                style={{ margin: 0, width: 40 }}
+                src="/js-icon.png"
+                alt="js logo"
+              />
+            </Link>
+
+            {header}
+            <div style={{ fontSize: "1.6rem" }}>
+              <Link
+                to="/blog"
+                style={{
+                  boxShadow: `none`,
+                  textDecoration: `none`,
+                  color: `#006080`,
+                }}
+              >
+                Blog
+              </Link>
+            </div>
+          </header>
           <main>{children}</main>
         </div>
         <Footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.reactjs.org"
+          >
+            React js
+          </a>
+          {` and `}
+          <a
+            href="https://www.gatsbyjs.org"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Gatsby
+          </a>
         </Footer>
       </Wrapper>
     )
