@@ -45,7 +45,7 @@ Scope in JavaScript refers to the current context of code, which determines the 
   </strong>: variables are those declared inside a function
 - <strong>Block Scope</strong>: variables are those declared inside of a block
 
-##### let and const
+#### let and const
 
 With ES6, we now have two additional ways for declaring variables, `let` and `const`, both of which declare variables
 that are block scoped.
@@ -76,7 +76,7 @@ and return syntax and read the same way the function executes.
 let sum = (a, b) => a + b;
 ```
 
-##### Single Line Arrow function without arguments
+#### Single Line Arrow function without arguments
 
 If there are no arguments, parentheses will be empty (but they should be present):
 
@@ -86,7 +86,7 @@ let sayHi = () => "Hi");
 sayHi();  // Hi
 ```
 
-##### Single Line with one argument
+#### Single Line with one argument
 
 If we have only one argument, then parentheses around parameters can be omitted, making that even shorter.
 
@@ -96,7 +96,7 @@ let sayHi = name => "Hi" + name);
 sayHi("Omar");  // Hi Omar
 ```
 
-##### Multiline arrow functions
+#### Multiline arrow functions
 
 multiple arrow function are also possible, but we should enclose them in curly braces.
 Then use a normal return within them.
@@ -121,7 +121,7 @@ Template literals are enclosed by the backtick (`` ` ` ``) character instead of 
 string text ${expression} string text
 ```
 
-##### Multiline string is allowed
+#### Multiline string is allowed
 
 Using template literals, you can format your string and the format will be preserved
 
@@ -132,7 +132,7 @@ multiline string is allowed with backticks
 `
 ```
 
-##### Nesting templates
+#### Nesting templates
 
 it is possible to nest template literals
 
@@ -172,7 +172,7 @@ console.log(sum(...numbers));
 
 ```
 
-##### combining or copying Arrays with Spread Operator
+#### combining or copying Arrays with Spread Operator
 
 Combine Arrays
 
@@ -211,7 +211,7 @@ function sumAll(...args) { // args is the name for the array
 
 ```
 
-##### Spread Operator vs Rest parameter
+#### Spread Operator vs Rest parameter
 
 When we see `...` in the code, it is either rest parameters or the spread syntax.
 
@@ -224,7 +224,7 @@ There’s an easy way to distinguish between them:
 
 The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 
-#### Array destructuring
+### Array destructuring
 
 ```JavaScript
 let arr = ["Ahmed", "Ali"]
