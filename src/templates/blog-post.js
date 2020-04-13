@@ -10,6 +10,7 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
+    const author = this.props.data.site.siteMetadata.author
     const { previous, next } = this.props.pageContext
 
     return (
@@ -27,7 +28,7 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(-1),
           }}
         >
-          {post.frontmatter.date}
+          {post.frontmatter.date} {" by "} {author}
         </p>
         <MDXRenderer>{post.body}</MDXRenderer>
         <hr

@@ -1,0 +1,284 @@
+---
+title: EcmaScript 2015 or ES6
+date: "2020-04-13T22:12:03.284Z"
+---
+
+![ES6](es6.png)
+
+`Evolution of JavaScript`
+
+> ECMAScript 2015 is also known as ES6.
+
+ECMAScript 6 comes with a very extensive list of new additions to the language and
+each of these features was carefully considered, discussed at length, and chosen by the
+community to become a part of the standard.
+
+## Content
+
+- <strong>Variable Declaration and Scoping</strong>
+- <strong>Arrow Functions</strong>
+- <strong>Template Literals</strong>
+- <strong>Default Parameters</strong>
+- <strong>Spread Operator</strong>
+- <strong>Rest Parameters</strong>
+- <strong>Array Destructuring</strong>
+- <strong>Object Destructuring</strong>
+- <strong>JSON</strong>
+- <strong>Modules</strong>
+- <strong>Code Transpilation</strong>
+
+### Variable Declaration and Scoping
+
+In the past, all variables in JavaScript were declared using the keyword `var`. These variables
+were function scoped, meaning their scope was within the function enclosing them, and
+this could sometimes be confusing to developers coming from other languages.
+
+#### Variable Scope
+
+Scope in JavaScript refers to the current context of code, which determines the accessibility of variables to JavaScript. The three types of scope are local (function and block) and global:
+
+- <strong>
+    Global Scope
+  </strong>: variables are those declared outside of a block or function
+- <strong>
+    Function Scope
+  </strong>: variables are those declared inside a function
+- <strong>Block Scope</strong>: variables are those declared inside of a block
+
+##### let and const
+
+With ES6, we now have two additional ways for declaring variables, `let` and `const`, both of which declare variables
+that are block scoped.
+
+```JavaScript
+let num = 42;
+{
+let num = 1000;
+}
+console.log(num); //42
+```
+
+The value 42 is printed to the console, because the second num variable is scoped to
+the block within which it is declared and does not affect the num variable outside of the
+block, where it remains 42.
+
+> <b>const</b> creates immutable variables. The values of
+> the variables created using const need to be assigned during declaration and cannot be
+> changed later in the program.
+
+### Arrow Functions
+
+Arrow functions are functions
+defined using a new syntax, the “fat” arrow =>. They help in making code more readable by opting out of the function
+and return syntax and read the same way the function executes.
+
+```JavaScript
+let sum = (a, b) => a + b;
+```
+
+##### Single Line Arrow function without arguments
+
+If there are no arguments, parentheses will be empty (but they should be present):
+
+```JavaScript
+let sayHi = () => "Hi");
+
+sayHi();  // Hi
+```
+
+##### Single Line with one argument
+
+If we have only one argument, then parentheses around parameters can be omitted, making that even shorter.
+
+```JavaScript
+let sayHi = name => "Hi" + name);
+
+sayHi("Omar");  // Hi Omar
+```
+
+##### Multiline arrow functions
+
+multiple arrow function are also possible, but we should enclose them in curly braces.
+Then use a normal return within them.
+
+```JavaScript
+let sayHi = (name) => {
+  let greeting = "Hi " + name
+  return greeting
+}
+
+sayHi("Ali");  // Hi Ali
+```
+
+### Template Literals
+
+Template literals are string literals allowing <b>embedded expressions</b>.
+You can use multi-line strings and string interpolation features with them.
+
+Template literals are enclosed by the backtick (`` ` ` ``) character instead of double or single quotes.
+
+```JavaScript
+string text ${expression} string text
+```
+
+##### Multiline string is allowed
+
+Using template literals, you can format your string and the format will be preserved
+
+```JavaScript
+const text = `
+Hello JS
+multiline string is allowed with backticks
+`
+```
+
+##### Nesting templates
+
+it is possible to nest template literals
+
+```JavaScript
+const classes = `header ${ isLargeScreen() ? '' :
+ `icon-${item.isCollapsed ? 'expander' : 'collapser'}` }`;
+```
+
+### Default Function Parameters
+
+ES6 offers the ability to set a default value to the
+parameter in the function declaration statement itself.
+
+```JavaScript
+
+const getName = function(firstName = "Visitor", lastName = "unknown") {
+console.log(firstName + " " + lastName);
+}
+getName("Ali"); // Ali unknown
+
+```
+
+### Spread Operator
+
+Spread operator allows an iterable such as an array or string to be expanded
+in places where zero or more arguments (for function calls) or elements (for array literals) are expected
+
+```JavaScript
+function sum(x, y, z) {
+  return x + y + z;
+}
+
+const numbers = [1, 2, 3];
+
+console.log(sum(...numbers));
+// expected output: 6
+
+```
+
+##### combining or copying Arrays with Spread Operator
+
+Combine Arrays
+
+```JavaScript
+const parts = ['shoulders', 'knees'];
+const body = ['head', ...parts, 'and', 'toes'];
+//  ["head", "shoulders", "knees", "and", "toes"]
+```
+
+copying Arrays
+
+```JavaScript
+const arr = [1, 2, 3];
+const newArr = [...arr];
+```
+
+### Rest Parameters
+
+Rest syntax looks exactly like spread syntax, but is used for destructuring arrays and objects.
+
+The <b>rest parameter</b> syntax allows us to represent an indefinite number of arguments as an array.
+
+A function's last parameter can be prefixed with ... which will cause all remaining (user supplied) arguments to be placed within array.
+
+> Only the last parameter of function, can be a "rest parameter".
+
+```JavaScript
+
+function sumAll(...args) { // args is the name for the array
+  let sum = 0;
+
+  for (let arg of args) sum += arg;
+
+  return sum;
+}
+
+```
+
+##### Spread Operator vs Rest parameter
+
+When we see `...` in the code, it is either rest parameters or the spread syntax.
+
+There’s an easy way to distinguish between them:
+
+- When ... is at the end of function parameters, it’s “rest parameters” and gathers the rest of the list of arguments into an array.
+- When ... occurs in a function call or alike, it’s called a “spread syntax” and expands an array into a list.
+
+### Destructuring Assignment
+
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+#### Array destructuring
+
+```JavaScript
+let arr = ["Ahmed", "Ali"]
+
+let [ firstName, lastName]  = arr;
+
+
+console.log(firstName)  // Ahmed
+```
+
+##### Skipping Unwanted elements using comma
+
+Unwanted elements of the array can also be thrown away via an extra comma:
+
+```JavaScript
+
+const courses = ["Network", "Graphics", "JavaScript", "Basic IT"]
+
+let [ , , js ]  = courses;
+
+console.log(js)  // javaScript
+
+```
+
+##### setting Default values if element does not exist
+
+If there are fewer values in the array than variables in the assignment, there will be no error.
+Absent values are considered undefined:
+
+```javaScript
+let [userName, password] = [];
+
+userName; // undefined
+password; // undefined
+```
+
+If we want a “default” value to replace the missing one, we can provide it using =:
+
+```javaScript
+let [userName = "test", password = '123'] = [];
+
+userName; // "test"
+password; // 123
+```
+
+##### String can also be desctructed like Array.
+
+```javaScript
+let [a, b, c] = "ABC";
+
+a; // "A"
+b; // "B"
+c; // 'C'
+
+```
+
+### Object destructuring
